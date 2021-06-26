@@ -1,15 +1,25 @@
 import Layout from "../components/Layout";
-import { posts } from "./posts/index"
+import { posts } from "./posts";
+import Link from "next/link";
 
-const Index = () => {
+
+// const Index = () => {
+//   return (
+//     <Layout pageTitle="My Blog">
+//       <h1>My Blog</h1>
+//     </Layout>
+//   )
+// };
+
+const Index = ({ posts }) => {
   return (
     <Layout pageTitle="My Blog">
-      <h1>My Blog</h1>
+      <h1 className="text-2xl font-semibold">Blog Posts</h1>
+      <PostsList posts={posts} />
     </Layout>
-  )
+  );
 };
 
-export default Index;
 
 const PostsList = ({ posts }) => {
   if (!posts || !posts.length) return <p>No posts found</p>;
@@ -40,3 +50,15 @@ const PostsList = ({ posts }) => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const postsData = posts();
+
+  return {
+    props: {
+      posts: postsData,
+    },
+  };
+}
+
+export default Index;
