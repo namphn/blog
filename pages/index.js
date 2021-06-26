@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import { posts } from "./posts";
+import { posts } from "../posts";
 import Link from "next/link";
 
 const Index = ({ posts }) => {
