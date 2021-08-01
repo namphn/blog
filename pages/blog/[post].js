@@ -1,5 +1,7 @@
 import { postSlugs, postForSlug } from "../../posts";
 import Layout from "../../components/Layout";
+import ReactMarkdown from "react-markdown";
+import CodeBlock from "../../components/CodeBlock";
 
 function Post({ frontmatter, body }) {
   if (!frontmatter) return <></>;
@@ -7,10 +9,10 @@ function Post({ frontmatter, body }) {
   return (
     <Layout pageTitle={frontmatter.title}>
       <div className="w-full">
-        <article className="max-w-none">
+        <article className="prose max-w-none">
           <h1>{frontmatter.title}</h1>
           <p className="italic">{frontmatter.date}</p>
-          {body}
+          <ReactMarkdown children={body} components={CodeBlock}/>
         </article>
       </div>
     </Layout>
