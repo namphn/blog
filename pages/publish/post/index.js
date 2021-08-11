@@ -13,8 +13,16 @@ import HorizontalTextIcon from "../../../resource/svg/horizontal_text_icon.svg"
 import TableIcon from "../../../resource/svg/table.svg"
 import LinkIcon from "../../../resource/svg/hyperlink.svg"
 import ImportImage from "../../../resource/svg/edit-image.svg"
+import {useState} from "react";
 
 function Index() {
+    const [selectText, setSelectText] = useState("");
+
+    const getSelectText = () => {
+        console.log('vaof')
+        console.log(window.getSelection().toString())
+        setSelectText(window.getSelection());
+    }
     return (
         <Layout pageTitle="create">
             <div className="h-80 mb-4">
@@ -23,51 +31,79 @@ function Index() {
                     <input placeholder="Tags" className="px-2 rounded bg-gray-20 w-full focus:outline-none focus:border-blue-300 border-2 h-10 mt-4" name="title" />
                 </div>
                 <div className="h-full  mt-4">
-                    <div className="rounded-t grid-flow-row w-full h-10 bg-gray-200 flex justify-around items-center">
-                        <a title="Bold (Ctrl-B)">
-                            <BoldIcon className="h-4 inline fill-current text-gray-500 " />
-                        </a>
-                        <a title="Italic (Ctrl-I)">
-                            <ItalicIcon className="h-4 inline fill-current text-gray-500" />
-                        </a>
-                        <a>
-                            <StrikeThrowIcon className="inline h-4 fill-current text-gray-500" />
-                        </a>
-                        <a>
-                            <Heading1 className="h-8 inline fill-current text-gray-500" />
-                        </a>
-                        <a>
-                            <Heading2 className="h-8 inline fill-current text-gray-500" />
-                        </a>
-                        <a>
-                            <Heading3 className="h-8 inline fill-current text-gray-500" />
-                        </a>
-                        <a>
-                            <HtmlTag className="h-7 inline fill-current text-gray-500" />
-                        </a>
-                        <a>
-                            <Quote className="h-4 inline fill-current text-gray-500"/>
-                        </a>
-                        <a>
-                            <GenericList className="h-5 inline fill-current text-gray-500"/>
-                        </a>
-                        <a>
-                            <HeadNumList className="h-5 inline fill-current text-gray-500"/>
-                        </a>
-                        <a>
-                            <HorizontalTextIcon className="h-5 inline fill-current text-gray-500" />
-                        </a>
-                        <a>
-                            <TableIcon className="h-5 inline fill-current text-gray-500"/>
-                        </a>
-                        <a>
-                            <LinkIcon className="h-5 inline fill-current text-gray-500"/>
-                        </a>
-                        <a>
-                            <ImportImage className="h-5 inline fill-current text-gray-500"/>
-                        </a>
+                    <div className="rounded-t w-full h-10 bg-gray-200 flex justify-around items-center">
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <BoldIcon className="h-4 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <ItalicIcon className="h-4 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <StrikeThrowIcon className="h-4 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <Heading1 className="h-8 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <Heading2 className="h-8 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <Heading3 className="h-8 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <HtmlTag className="h-7 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <Quote className="h-4 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded" >
+                                <GenericList className="h-5 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded" >
+                                <HeadNumList className="h-5 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <HorizontalTextIcon className="h-5 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <TableIcon className="h-5 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <LinkIcon className="h-5 fill-current text-gray-500" />
+                            </div>
+                        </button>
+                        <button>
+                            <div className="w-8 h-8 flex items-center justify-center hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-opacity-50 rounded">
+                                <ImportImage className="h-5 fill-current text-gray-500" />
+                            </div>
+                        </button>
                     </div>
-                    <textarea placeholder="Content" className="px-2 rounded-b resize-none focus:outline-none focus:border-blue-300 bg-gray-20 w-full h-full border-2" />
+                    <textarea onMouseUp={getSelectText} onDoubleClick={getSelectText} placeholder="Content" className="px-2 rounded-b resize-none focus:outline-none focus:border-blue-300 bg-gray-20 w-full h-full border-2" />
                 </div>
             </div>
         </Layout>

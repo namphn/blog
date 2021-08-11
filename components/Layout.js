@@ -52,6 +52,9 @@ function Layout({ children, pageTitle }) {
               <Link href="/sports">
                 <a class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
               </Link>
+              <Link href="/publish/post">
+                <a class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Create</a>
+              </Link>
             </div>
           </div>
         </nav >
