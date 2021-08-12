@@ -13,20 +13,32 @@ import HorizontalTextIcon from "../../../resource/svg/horizontal_text_icon.svg"
 import TableIcon from "../../../resource/svg/table.svg"
 import LinkIcon from "../../../resource/svg/hyperlink.svg"
 import ImportImage from "../../../resource/svg/edit-image.svg"
-import {useState} from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+import MarkdownIt from 'markdown-it';
+
+const MdEditor = dynamic(() => import('react-markdown-editor-lite'), {
+    ssr: false,
+})
+
+const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 function Index() {
     const [selectText, setSelectText] = useState("");
+    const [text, setText] = useState("");
 
     const getSelectText = () => {
-        console.log('vaof')
-        console.log(window.getSelection().toString())
-        setSelectText(window.getSelection());
+        setSelectText(window.getSelection().toString());
+    }
+    const boldText = () => {
+        if (selectText) {
+            set
+        }
     }
     return (
         <Layout pageTitle="create">
             <div className="h-80 mb-4">
-                <div>
+                {/* <div>
                     <input placeholder="Title" className="px-2 rounded bg-gray-20 focus:outline-none focus:border-blue-300 w-full border-2 h-10" name="title" />
                     <input placeholder="Tags" className="px-2 rounded bg-gray-20 w-full focus:outline-none focus:border-blue-300 border-2 h-10 mt-4" name="title" />
                 </div>
@@ -103,9 +115,16 @@ function Index() {
                             </div>
                         </button>
                     </div>
-                    <textarea onMouseUp={getSelectText} onDoubleClick={getSelectText} placeholder="Content" className="px-2 rounded-b resize-none focus:outline-none focus:border-blue-300 bg-gray-20 w-full h-full border-2" />
-                </div>
+                    <textarea onMouseUp={getSelectText}
+                        onDoubleClick={getSelectText}
+                        onChange={(value) => {setText(value)}}
+                        placeholder="Content" className="px-2 rounded-b resize-none focus:outline-none focus:border-blue-300 bg-gray-20 w-full h-full border-2">
+                        {text}
+                    </textarea>
+                </div> */}
+                
             </div>
+            <MdEditor style={{ height: '500px' }} renderHTML={text => mdParser.render(text)}/>
         </Layout>
     )
 }
