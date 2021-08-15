@@ -52,10 +52,13 @@ function Layout({ children, pageTitle }) {
               <Link href="/sports">
                 <a class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Sports</a>
               </Link>
+              <Link href="/publish/post">
+                <a class="hover:bg-gray-400 rounded py-2 px-4 mx-2">Create</a>
+              </Link>
             </div>
           </div>
         </nav >
-        <main className="w-11/12 md:w-full max-w-2xl mx-auto my-8 flex-grow">
+        <main className="w-11/12 md:w-full max-w-7xl mx-auto my-8 flex-grow">
           {children}
         </main>
         <footer class="w-full border-t bg-white pb-12">
