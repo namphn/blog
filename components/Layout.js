@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/Link";
+import React from "react";
 
 function Layout({ children, pageTitle }) {
   return (
