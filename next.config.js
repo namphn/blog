@@ -1,3 +1,5 @@
+const removeImports = require('next-remove-imports')();
+
 const nextConfig = {
     target: "serverless",
     webpack: function (config) {
