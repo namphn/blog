@@ -7,6 +7,11 @@ const MdEditor = dynamic(() => import("react-markdown-editor-lite"), {
     ssr: false
 });
 
+
+function handleEditorChange({ html, text }) {
+    console.log('handleEditorChange', html, text);
+  }
+
 export default function () {
     return (
         <Layout pageTitle="culture">
@@ -23,6 +28,7 @@ export default function () {
             <MdEditor
                 style={{ height: "500px" }}
                 renderHTML={(text) => <ReactMarkdown children={text} />}
+                onChange={handleEditorChange}
             />
         </Layout>
 
