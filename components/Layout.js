@@ -59,7 +59,7 @@ function Layout({ children, pageTitle }) {
             </div>
           </div>
         </nav >
-        <main className="w-11/12 md:w-full max-w-7xl mx-auto my-8 flex-grow">
+        <main className=" w-3/5 md:w-full max-w-4xl mx-auto my-8 flex-grow">
           {children}
         </main>
         <footer class="w-full border-t bg-white pb-12">
