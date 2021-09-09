@@ -46,7 +46,7 @@ export default function () {
 
   React.useEffect(() => {
     const init = (quill2) => {
-      console.log(quill2.quillEditor);
+      console.log(quill2);
       setQuill(quill2)
     };
     const check = () => {
@@ -109,7 +109,7 @@ export default function () {
 
       // Save current cursor state
       console.log(quill.quillEditor)
-      const range = quill.getSelection(true);
+      const range = quill.getEditorSelection(true);
 
       // Insert temporary loading placeholder image
       quill.insertEmbed(range.index, 'image', `${window.location.origin}/images/loaders/placeholder.gif`);
