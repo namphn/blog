@@ -62,7 +62,8 @@ export default function () {
 
   React.useEffect(() => {
     const init = (quill2) => {
-      console.log(quill2.getEditor());
+      quillRef.current = quill2.getEditor();
+      // console.log(quillRef);
     };
     const check = () => {
       if (quillRef.current) {
@@ -76,11 +77,11 @@ export default function () {
 
   const [value, setValue] = React.useState("");
 
-  const apiPostNewsImage = () => {
+  const apiPostNewsImage = (data) => {
     // API post, returns image location as string e.g. 'http://www.example.com/images/foo.png'
     return new Promise((resolve, reject) => {
       const formData = new FormData();
-      formData.append("image", file);
+      formData.append("image", data);
 
       fetch(
         "https://api.imgbb.com/1/upload?key=d36eb6591370ae7f9089d85875e56b22",
@@ -115,23 +116,23 @@ export default function () {
       formData.append('image', file);
 
       // Save current cursor state
-      console.log(quill.quillEditor)
-      const range = quillRef.getEditorSelection(true);
+      console.log(quillRef.current)
+      const range = quillRef.current.getSelection(true);
 
       // Insert temporary loading placeholder image
-      quillRef.insertEmbed(range.index, 'image', `${window.location.origin}/images/loaders/placeholder.gif`);
+      quillRef.current.insertEmbed(range.index, 'image', `${window.location.origin}/images/loaders/placeholder.gif`);
 
       // Move cursor to right side of image (easier to continue typing)
-      quillRef.setSelection(range.index + 1);
+      quillRef.current.setSelection(range.index + 1);
 
       const res = await apiPostNewsImage(formData); // API post, returns image location as string e.g. 'http://www.example.com/images/foo.png'
 
       // Remove placeholder image
-      quillRef.deleteText(range.index, 1);
+      quillRef.current.deleteText(range.index, 1);
 
       // Insert uploaded image
       // this.quill.insertEmbed(range.index, 'image', res.body.image);
-      quillRef.insertEmbed(range.index, 'image', res);
+      quillRef.current.insertEmbed(range.index, 'image', res);
     };
   }
 
@@ -157,7 +158,7 @@ export default function () {
       </div>
       <ReactQuill
         forwardedRef={quillRef}
-        theme="snow" value={value}
+        theme="snow" defaultValue={value}
         onChange={onChange}
         modules={{
           toolbar: {
@@ -171,9 +172,9 @@ export default function () {
               ['clean'],
               ['code-block']
             ],
-            handlers: {
-              image: imageHandler
-            }
+            // handlers: {
+            //   image: imageHandler
+            // }
           }
         }}
       />
