@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import ReactMarkdown from "react-markdown";
 import "react-markdown-editor-lite/lib/index.css";
 import Layout from "../../../components/Layout";
 import 'react-quill/dist/quill.snow.css';
@@ -40,14 +39,30 @@ const save = async (title, summary, content) => {
     })
 }
 
+const formats = [
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'video',
+]
+
 export default function () {
   const quillRef = React.useRef();
   const [quill, setQuill] = React.useState();
 
   React.useEffect(() => {
     const init = (quill2) => {
-      console.log(quill2);
-      setQuill(quill2)
+      console.log(quill2.getEditor());
     };
     const check = () => {
       if (quillRef.current) {
@@ -59,15 +74,7 @@ export default function () {
     check();
   }, [quillRef]);
 
-  const [value, setValue] = React.useState('');
-  const [exportHtml, setExportHtml] = React.useState();
-  const onChange = (editor) => {
-    setExportHtml(editor.getContents());
-  }
-
-  const handleChange = (html) => {
-    setValue(html);
-  }
+  const [value, setValue] = React.useState("");
 
   const apiPostNewsImage = () => {
     // API post, returns image location as string e.g. 'http://www.example.com/images/foo.png'
@@ -109,23 +116,28 @@ export default function () {
 
       // Save current cursor state
       console.log(quill.quillEditor)
-      const range = quill.getEditorSelection(true);
+      const range = quillRef.getEditorSelection(true);
 
       // Insert temporary loading placeholder image
-      quill.insertEmbed(range.index, 'image', `${window.location.origin}/images/loaders/placeholder.gif`);
+      quillRef.insertEmbed(range.index, 'image', `${window.location.origin}/images/loaders/placeholder.gif`);
 
       // Move cursor to right side of image (easier to continue typing)
-      quill.setSelection(range.index + 1);
+      quillRef.setSelection(range.index + 1);
 
       const res = await apiPostNewsImage(formData); // API post, returns image location as string e.g. 'http://www.example.com/images/foo.png'
 
       // Remove placeholder image
-      quill.deleteText(range.index, 1);
+      quillRef.deleteText(range.index, 1);
 
       // Insert uploaded image
       // this.quill.insertEmbed(range.index, 'image', res.body.image);
-      quill.insertEmbed(range.index, 'image', res);
+      quillRef.insertEmbed(range.index, 'image', res);
     };
+  }
+
+  const onChange = (text) => {
+    console.log(text);
+    setValue(text);
   }
 
   return (
@@ -146,7 +158,7 @@ export default function () {
       <ReactQuill
         forwardedRef={quillRef}
         theme="snow" value={value}
-        onChange={setValue}
+        onChange={onChange}
         modules={{
           toolbar: {
             container: [
