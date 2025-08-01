@@ -7,12 +7,11 @@ import { useRouter } from 'next/navigation';
 
 export default function BlogHomepage({ posts, currentCategory = 'ALL', categorySlug = 'all' }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('ALL');
   const router = useRouter();
   // Filter posts based on selected category
-  const filteredPosts = selectedCategory === 'ALL'
+  const filteredPosts = currentCategory === 'ALL'
     ? posts
-    : posts.filter(post => post.category === selectedCategory);
+    : posts.filter(post => post.category === currentCategory);
 
   const handleCategoryClick = (category) => {
     const slug = categories[category].slug;
@@ -22,6 +21,10 @@ export default function BlogHomepage({ posts, currentCategory = 'ALL', categoryS
       router.push(`/${slug}`);
     }
   };
+
+  React.useEffect(() => {
+    console.log('Current Category:', currentCategory);
+  }, [currentCategory]);
 
   const handlePostClick = (post) => {
     const categorySlug = categories[post.category]?.slug;
@@ -85,7 +88,7 @@ export default function BlogHomepage({ posts, currentCategory = 'ALL', categoryS
                       handleCategoryClick(category);
                       setIsMenuOpen(false);
                     }}
-                    className={`text-left py-2 transition-colors ${selectedCategory === category
+                    className={`text-left py-2 transition-colors ${currentCategory === category
                       ? 'text-white font-medium'
                       : 'text-gray-300 hover:text-white'
                       }`}

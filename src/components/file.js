@@ -28,6 +28,7 @@ export function getPostsByCategory(category) {
     }
   
     const fileNames = fs.readdirSync(categoryPath);
+    console.log('Category:', category, 'Files:', fileNames);
     const posts = fileNames
       .filter(name => name.endsWith('.md'))
       .map(name => {
@@ -65,7 +66,6 @@ export function getPostsByCategory(category) {
   export async function getPostBySlug(category, slug) {
     const fullPath = path.join(contentDirectory, category, `${slug}.md`);
     const files = fs.readdirSync(path.join(contentDirectory, category));
-    console.log('Files:', files);
 
     if (!fs.existsSync(fullPath)) {
       return null;
