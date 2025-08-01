@@ -1,12 +1,12 @@
 export const categories = {
-  'ALL': 'ALL',
-  'LeetCode': 'LeetCode',
-  'Cloud': 'Cloud',
-  'Database': 'Database',
-  'Java': 'Java',
-  'Networking': 'Networking',
-  'Operating Systems': 'Operating Systems',
-  'Systems Design': 'Systems Design'
+  'ALL': { name: 'ALL', slug: '' },
+  'LeetCode': { name: 'LeetCode', slug: 'leetcode' },
+  'Cloud': { name: 'Cloud', slug: 'cloud' },
+  'Database': { name: 'Database', slug: 'database' },
+  'Java': { name: 'Java', slug: 'java' },
+  'Networking': { name: 'Networking', slug: 'networking' },
+  'Operating Systems': { name: 'Operating Systems', slug: 'operating-systems' },
+  'Systems Design': { name: 'Systems Design', slug: 'systems-design' }
 };
 
 // Simple SVG icons - no external dependencies
@@ -63,4 +63,5 @@ export const X = ({ className }) => (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
+
 

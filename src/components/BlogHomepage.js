@@ -1,28 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import BlogPost from './BlogPost';
 import { categories, Menu } from './util';
 import { useRouter } from 'next/navigation';
 
 
 export default function BlogHomepage({ posts, currentCategory = 'ALL', categorySlug = 'all' }) {
   const [currentView, setCurrentView] = useState('home');
-  const [selectedPost, setSelectedPost] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const router = useRouter();
-
-  const categories = {
-    'ALL': { name: 'ALL', slug: '' }, // Homepage
-    'LeetCode': { name: 'LeetCode', slug: 'leetcode' },
-    'Cloud': { name: 'Cloud', slug: 'cloud' },
-    'Database': { name: 'Database', slug: 'database' },
-    'Java': { name: 'Java', slug: 'java' },
-    'Networking': { name: 'Networking', slug: 'networking' },
-    'Operating Systems': { name: 'Operating Systems', slug: 'operating-systems' },
-    'Systems Design': { name: 'Systems Design', slug: 'systems-design' }
-  };
   // Filter posts based on selected category
   const filteredPosts = selectedCategory === 'ALL'
     ? posts
@@ -43,14 +30,6 @@ export default function BlogHomepage({ posts, currentCategory = 'ALL', categoryS
       router.push(`/${categorySlug}/${post.slug}`);
     }
   };
-
-  const handleBackToHome = () => {
-    setCurrentView('home');
-  };
-
-  if (currentView === 'post' && selectedPost) {
-    return <BlogPost post={selectedPost} onBack={handleBackToHome} />;
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">

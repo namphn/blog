@@ -1,6 +1,7 @@
 // app/[category]/page.js
 import BlogHomepage from '@/components/BlogHomepage';
 import { notFound } from 'next/navigation';
+import { getPostsByCategory } from '@/components/file';
 
 // Valid categories
 const VALID_CATEGORIES = [
@@ -58,8 +59,8 @@ export default async function CategoryPage({ params }) {
     notFound();
   }
   
-  const posts = await fetchPostsByCategory(category);
-  const currentCategory = CATEGORY_MAP[category];
+  const posts = getPostsByCategory(category);
+  const currentCategory = posts[0]?.category || 'Unknown';
   
   return (
     <BlogHomepage 
