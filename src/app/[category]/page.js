@@ -1,23 +1,10 @@
 // app/[category]/page.js
 import BlogHomepage from '@/components/BlogHomepage';
 import { notFound } from 'next/navigation';
-import { getPostsByCategory } from '@/components/file';
+import { getPostsByCategory, CATEGORY_MAP } from '@/components/file';
+import { VALID_CATEGORIES } from '@/components/util';
 
-// Valid categories
-const VALID_CATEGORIES = [
-  'leetcode', 'cloud', 'database', 'java', 
-  'networking', 'operating-systems', 'systems-design'
-];
 
-const CATEGORY_MAP = {
-  'leetcode': 'LeetCode',
-  'cloud': 'Cloud', 
-  'database': 'Database',
-  'java': 'Java',
-  'networking': 'Networking',
-  'operating-systems': 'Operating Systems',
-  'systems-design': 'Systems Design'
-};
 
 export default async function CategoryPage({ params }) {
   const { category } = params;
@@ -28,7 +15,7 @@ export default async function CategoryPage({ params }) {
   }
   
   const posts = await getPostsByCategory(category);
-  console.log('Posts:', posts);
+ 
   const currentCategory = CATEGORY_MAP[category] || 'Unknown';
   
   return (
@@ -39,7 +26,6 @@ export default async function CategoryPage({ params }) {
     />
   );
 }
-
 
 export async function generateMetadata({ params }) {
   const { category } = params;

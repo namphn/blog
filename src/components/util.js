@@ -5,9 +5,14 @@ export const categories = {
   'Database': { name: 'Database', slug: 'database' },
   'Java': { name: 'Java', slug: 'java' },
   'Networking': { name: 'Networking', slug: 'networking' },
-  'Operating Systems': { name: 'Operating Systems', slug: 'operating-systems' },
-  'Systems Design': { name: 'Systems Design', slug: 'systems-design' }
+  'Operating System': { name: 'Operating Systems', slug: 'operating-system' },
+  'System Design': { name: 'System Design', slug: 'system-design' }
 };
+
+export const VALID_CATEGORIES = [
+  'leetcode', 'cloud', 'database', 'java', 
+  'networking', 'operating-system', 'system-design'
+];
 
 // Simple SVG icons - no external dependencies
 export const Calendar = ({ className }) => (

@@ -3,6 +3,7 @@
 import BlogHomepage from '@/components/BlogHomepage';
 import { getAllPosts } from '@/components/file';
 
+
 // Mock API function - trong thực tế sẽ fetch từ database/CMS
 
 export default async function Home() {
@@ -17,14 +18,6 @@ export default async function Home() {
     />
   );
 }
-
-export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(process.cwd(), 'posts'));
-  return files.map((file) => ({
-    slug: file.replace('.md', ''),
-  }));
-}
-
 // Metadata for SEO
 export const metadata = {
   title: 'Biilog - Technical Blog',

@@ -10,7 +10,7 @@ import rehypeHighlight from 'rehype-highlight';
 
 const contentDirectory = path.join(process.cwd(), 'posts');
 
-const CATEGORY_MAP = {
+export const CATEGORY_MAP = {
   'leetcode': 'LeetCode',
   'cloud': 'Cloud', 
   'database': 'Database',

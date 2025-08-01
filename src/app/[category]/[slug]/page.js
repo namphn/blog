@@ -2,21 +2,9 @@
 import BlogPost from '@/components/BlogPost';
 import { notFound } from 'next/navigation';
 import { getPostBySlug } from '@/components/file';
-
-const VALID_CATEGORIES = [
-  'leetcode', 'cloud', 'database', 'java', 
-  'networking', 'operating-systems', 'systems-design'
-];
-
-const CATEGORY_MAP = {
-  'leetcode': 'LeetCode',
-  'cloud': 'Cloud', 
-  'database': 'Database',
-  'java': 'Java',
-  'networking': 'Networking',
-  'operating-systems': 'Operating Systems',
-  'systems-design': 'Systems Design'
-};
+import { VALID_CATEGORIES } from '@/components/util';
+import fs from 'fs';
+import path from 'path';
 
 // Server Component
 export default async function BlogPostPage({ params }) {
@@ -41,6 +29,26 @@ export default async function BlogPostPage({ params }) {
       categorySlug={category}
     />
   );
+}
+
+export const dynamic = 'force-static';
+
+export async function generateStaticParams() {
+  const allParams = [];
+
+  VALID_CATEGORIES.forEach((category) => {
+    const dir = path.join(process.cwd(), 'posts', category);
+    const files = fs.readdirSync(dir);
+
+    files.forEach((file) => {
+      allParams.push({
+        category,
+        slug: file.replace(/\.md$/, ''),
+      });
+    });
+  });
+
+  return allParams;
 }
 
 // SEO metadata
