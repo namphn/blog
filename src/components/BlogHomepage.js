@@ -22,10 +22,6 @@ export default function BlogHomepage({ posts, currentCategory = 'ALL', categoryS
     }
   };
 
-  React.useEffect(() => {
-    console.log('Current Category:', currentCategory);
-  }, [currentCategory]);
-
   const handlePostClick = (post) => {
     const categorySlug = categories[post.category]?.slug;
     if (categorySlug) {

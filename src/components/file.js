@@ -16,8 +16,8 @@ export const CATEGORY_MAP = {
   'database': 'Database',
   'java': 'Java',
   'networking': 'Networking',
-  'operating-systems': 'Operating Systems',
-  'systems-design': 'Systems Design'
+  'operating-system': 'Operating System',
+  'system-design': 'System Design'
 };
 // Get all posts from a specific category
 export function getPostsByCategory(category) {
@@ -28,7 +28,6 @@ export function getPostsByCategory(category) {
     }
   
     const fileNames = fs.readdirSync(categoryPath);
-    console.log('Category:', category, 'Files:', fileNames);
     const posts = fileNames
       .filter(name => name.endsWith('.md'))
       .map(name => {
