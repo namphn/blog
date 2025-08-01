@@ -28,7 +28,7 @@ function BlogPost({ post, categorySlug }) {
             <div className="flex items-center">
               <button
                 onClick={() => router.push('/')}
-                className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+                className="cursor-pointer text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
               >
                 Namph
               </button>

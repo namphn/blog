@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 
 
 export default function BlogHomepage({ posts, currentCategory = 'ALL', categorySlug = 'all' }) {
-  const [currentView, setCurrentView] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const router = useRouter();

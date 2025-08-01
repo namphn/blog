@@ -8,7 +8,7 @@ import rehypePrism from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
 import rehypeHighlight from 'rehype-highlight';
 
-const contentDirectory = path.join(process.cwd(), 'src/app/[category]');
+const contentDirectory = path.join(process.cwd(), 'posts');
 
 const CATEGORY_MAP = {
   'leetcode': 'LeetCode',
