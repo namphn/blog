@@ -3,8 +3,8 @@ import BlogHomepage from '@/components/BlogHomepage';
 import { notFound } from 'next/navigation';
 import { getPostsByCategory, CATEGORY_MAP } from '@/components/file';
 import { VALID_CATEGORIES } from '@/components/util';
-
-
+import fs from 'fs';
+import path from 'path';
 
 export default async function CategoryPage({ params }) {
   const { category } = params;
@@ -25,6 +25,22 @@ export default async function CategoryPage({ params }) {
       categorySlug={category}
     />
   );
+}
+
+export const dynamic = 'force-static';
+
+
+export async function generateStaticParams() {
+  const postsRoot = path.join(process.cwd(), 'posts');
+
+  const categories = fs
+    .readdirSync(postsRoot)
+    .filter((name) => {
+      const dir = path.join(postsRoot, name);
+      return fs.lstatSync(dir).isDirectory();
+    });
+
+  return categories.map((category) => ({ category }));
 }
 
 export async function generateMetadata({ params }) {
