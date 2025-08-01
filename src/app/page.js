@@ -18,6 +18,13 @@ export default async function Home() {
   );
 }
 
+export async function generateStaticParams() {
+  const files = fs.readdirSync(path.join(process.cwd(), 'src/app/[category]'));
+  return files.map((file) => ({
+    slug: file.replace('.md', ''),
+  }));
+}
+
 // Metadata for SEO
 export const metadata = {
   title: 'Biilog - Technical Blog',
