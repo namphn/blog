@@ -38,6 +38,7 @@ export async function generateStaticParams() {
 
   VALID_CATEGORIES.forEach((category) => {
     const dir = path.join(process.cwd(), 'posts', category);
+    if (!fs.existsSync(dir)) return;
     const files = fs.readdirSync(dir);
 
     files.forEach((file) => {
