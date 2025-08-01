@@ -231,13 +231,17 @@ async function fetchPosts() {
   ];
 }
 
-// Server Component - chạy trên server mỗi request
 export default async function Home() {
   // Fetch posts data on server-side
   const posts = await fetchPosts();
   
-  // Return the blog homepage with server-fetched data
-  return <BlogHomepage posts={posts} />;
+  return (
+    <BlogHomepage 
+      posts={posts} 
+      currentCategory="ALL"
+      categorySlug="all"
+    />
+  );
 }
 
 // Metadata for SEO
