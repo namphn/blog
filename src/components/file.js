@@ -64,9 +64,10 @@ export function getPostsByCategory(category) {
   // Get a specific post by category and slug
   export async function getPostBySlug(category, slug) {
     const fullPath = path.join(contentDirectory, category, `${slug}.md`);
+    const files = fs.readdirSync(path.join(contentDirectory, category));
+    console.log('Files:', files);
 
     if (!fs.existsSync(fullPath)) {
-
       return null;
     }
   
