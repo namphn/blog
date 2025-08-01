@@ -71,12 +71,6 @@ export default async function CategoryPage({ params }) {
   );
 }
 
-// Generate static params for all categories
-export async function generateStaticParams() {
-  return VALID_CATEGORIES.map(category => ({
-    category
-  }));
-}
 
 export async function generateMetadata({ params }) {
   const { category } = params;

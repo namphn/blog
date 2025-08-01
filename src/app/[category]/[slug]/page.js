@@ -43,18 +43,6 @@ export default async function BlogPostPage({ params }) {
   );
 }
 
-// Generate static params for build time
-export async function generateStaticParams() {
-  // This would fetch all posts from your CMS/database
-  return [
-    { category: 'leetcode', slug: 'two-sum-optimal-solution' },
-    { category: 'leetcode', slug: 'binary-tree-traversal' },
-    { category: 'java', slug: 'spring-boot-microservices' },
-    { category: 'cloud', slug: 'aws-lambda-best-practices' },
-    // ... more posts
-  ];
-}
-
 // SEO metadata
 export async function generateMetadata({ params }) {
   const { category, slug } = params;
