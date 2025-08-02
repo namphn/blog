@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { categories, Menu } from './util';
 import { useRouter } from 'next/navigation';
-import { SLUG_MAP } from "./util"
+import { SLUG_MAP, X } from "./util"
 
 
 export default function BlogHomepage({ posts, currentCategory = 'ALL', categorySlug = 'all' }) {
@@ -69,30 +69,41 @@ export default function BlogHomepage({ posts, currentCategory = 'ALL', categoryS
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden text-gray-300 hover:text-white"
+              className="md:hidden cursor-pointer text-gray-300 hover:text-white transition-all duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <div className="relative w-6 h-6">
+                <Menu className={`absolute inset-0 transition-all duration-300 ${isMenuOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'}`} />
+                <X className={`absolute inset-0 transition-all duration-300 ${isMenuOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`} />
+              </div>
             </button>
           </div>
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <nav className="md:hidden py-4 border-t border-gray-800/50 mt-4">
+            <nav className="md:hidden py-4 border-t border-gray-800/50 mt-4 animate-fadeIn">
               <div className="flex flex-col space-y-3">
-                {Object.keys(categories).map(category => (
+                {Object.entries(categories).map(([categoryName, categoryData], index) => (
                   <button
-                    key={category}
+                    key={categoryName}
                     onClick={() => {
-                      handleCategoryClick(category);
+                      handleCategoryClick(categoryName);
                       setIsMenuOpen(false);
                     }}
-                    className={`text-left py-2 transition-colors ${currentCategory === category
-                      ? 'text-white font-medium'
-                      : 'text-gray-300 hover:text-white'
+                    className={`text-left py-3 px-4 rounded-lg transition-all duration-300 hover:scale-105 relative group ${currentCategory === categoryName
+                        ? 'text-white font-medium bg-gray-800/50'
+                        : 'text-gray-300 hover:text-white hover:bg-gray-800/30'
                       }`}
+                    style={{
+                      animationDelay: `${index * 100}ms`,
+                      animation: 'slideInUp 0.4s ease-out forwards'
+                    }}
                   >
-                    {category}
+                    {categoryName}
+                    <span className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300 ${currentCategory === categoryName
+                        ? 'w-full opacity-100'
+                        : 'w-0 group-hover:w-full opacity-0 group-hover:opacity-100'
+                      }`}></span>
                   </button>
                 ))}
               </div>
