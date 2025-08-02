@@ -171,7 +171,7 @@ export default function BlogHomepage({ posts, currentCategory = 'ALL', categoryS
                   {/* Social Links */}
                   <div className="flex space-x-4 mt-8">
                     <a
-                      href="https://github.com/Nam Phamn"
+                      href="https://github.com/namphn"
                       target="_blank"
                       className="flex items-center space-x-2 px-4 py-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-full text-gray-300 hover:text-white hover:border-blue-500/50 transition-all duration-300"
                     >
