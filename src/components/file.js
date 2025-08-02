@@ -4,9 +4,9 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkRehype from 'remark-rehype';
 import remarkGfm from 'remark-gfm';
-import rehypePrism from 'rehype-prism-plus';
 import rehypeStringify from 'rehype-stringify';
-import rehypeHighlight from 'rehype-highlight';
+import rehypePrismPlus from 'rehype-prism-plus';
+import rehypeCodeTitles from 'rehype-code-titles';
 
 const contentDirectory = path.join(process.cwd(), 'posts');
 
@@ -64,7 +64,6 @@ export function getPostsByCategory(category) {
   // Get a specific post by category and slug
   export async function getPostBySlug(category, slug) {
     const fullPath = path.join(contentDirectory, category, `${slug}.md`);
-    const files = fs.readdirSync(path.join(contentDirectory, category));
 
     if (!fs.existsSync(fullPath)) {
       return null;
@@ -75,12 +74,16 @@ export function getPostsByCategory(category) {
   
     // Process markdown to HTML with syntax highlighting
     const processedContent = await remark()
-      .use(remarkGfm) // GitHub Flavored Markdown
-      .use(remarkRehype) // Convert to rehype (HTML) tree
-      .use(rehypePrism) // Add syntax highlighting
-      .use(rehypeStringify) // Convert to HTML string
-      .use(rehypeHighlight)
-      .process(content);
+    .use(remarkGfm)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeCodeTitles)
+    .use(rehypePrismPlus, {
+      showLineNumbers: true,
+      ignoreMissing: true,
+      defaultLanguage: 'text',
+    })
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(content);
   
     const contentHtml = processedContent.toString();
   

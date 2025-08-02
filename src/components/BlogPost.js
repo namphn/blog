@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Calendar, Clock, Heart, Share } from '@/components/svg'; // Adjust the import path as needed
+import MarkdownRenderer from '@/components/MarkdownRenderer';
 
 
 function BlogPost({ post, categorySlug }) {
@@ -89,9 +90,8 @@ function BlogPost({ post, categorySlug }) {
 
           {/* Render HTML content from server */}
           {post.content ? (
-            <div 
-              className="space-y-4 text-lg "
-              dangerouslySetInnerHTML={{ __html: post.content }}
+            <MarkdownRenderer 
+              htmlContent={post.content}
             />
           ) : (
             <div className="space-y-8 text-lg leading-relaxed">

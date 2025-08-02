@@ -94,20 +94,6 @@ def twoSum(nums: List[int], target: int) -> List[int]:
     return []
 ```
 
-### Step-by-Step Walkthrough:
-
-Let's trace through `nums = [2, 7, 11, 15]`, `target = 9`:
-
-1. **i=0, num=2**:
-   - `complement = 9 - 2 = 7`
-   - `7` not in HashMap yet
-   - Store: `{2: 0}`
-
-2. **i=1, num=7**:
-   - `complement = 9 - 7 = 2`
-   - `2` exists in HashMap at index `0`
-   - Return `[0, 1]` ✅
-
 ### Complexity Analysis:
 - **Time Complexity:** O(n) - Single pass through array
 - **Space Complexity:** O(n) - HashMap storage
