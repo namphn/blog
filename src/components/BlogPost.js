@@ -12,8 +12,9 @@ function BlogPost({ post, categorySlug }) {
   const [isLiked, setIsLiked] = useState(false);
   
   const handleBackClick = () => {
-    if (categorySlug && categorySlug !== 'all') {
-      router.push(`/${categorySlug}`);
+    const fromCategory = sessionStorage.getItem('fromCategory');
+    if (fromCategory && fromCategory !== 'ALL') {
+      router.push(`/${fromCategory}`);
     } else {
       router.push('/');
     }

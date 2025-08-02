@@ -14,6 +14,16 @@ export const VALID_CATEGORIES = [
   'networking', 'operating-system', 'system-design'
 ];
 
+export const SLUG_MAP = {
+  'LeetCode': 'leetcode',
+  'Cloud': 'cloud', 
+  'Database': 'database',
+  'Java': 'java',
+  'Networking': 'networking',
+  'Operating System': 'operating-system',
+  'System Design': 'system-design'
+};
+
 // Simple SVG icons - no external dependencies
 export const Calendar = ({ className }) => (
   <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">

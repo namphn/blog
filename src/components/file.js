@@ -19,6 +19,7 @@ export const CATEGORY_MAP = {
   'operating-system': 'Operating System',
   'system-design': 'System Design'
 };
+
 // Get all posts from a specific category
 export function getPostsByCategory(category) {
     const categoryPath = path.join(contentDirectory, category);

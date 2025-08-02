@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { categories, Menu } from './util';
 import { useRouter } from 'next/navigation';
+import { SLUG_MAP } from "./util"
 
 
 export default function BlogHomepage({ posts, currentCategory = 'ALL', categorySlug = 'all' }) {
@@ -24,6 +25,8 @@ export default function BlogHomepage({ posts, currentCategory = 'ALL', categoryS
 
   const handlePostClick = (post) => {
     const categorySlug = categories[post.category]?.slug;
+    const fromSlug = SLUG_MAP[currentCategory] || 'ALL';
+    sessionStorage.setItem('fromCategory', fromSlug);
     if (categorySlug) {
       router.push(`/${categorySlug}/${post.slug}`);
     }
