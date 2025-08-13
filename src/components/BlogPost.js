@@ -32,7 +32,7 @@ function BlogPost({ post, categorySlug }) {
                 onClick={() => router.push('/')}
                 className="cursor-pointer text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
               >
-                Namph
+                Nam Pham
               </button>
               <div className="ml-3 w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-pulse"></div>
             </div>
