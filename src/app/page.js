@@ -20,27 +20,21 @@ export default async function Home() {
 }
 // Metadata for SEO
 export const metadata = {
-  title: 'Biilog - Technical Blog',
+  title: 'Nam Pham - Technical Blog',
   description: 'Sharing knowledge about programming, technology and career development',
-  keywords: 'blog, programming, technology, javascript, python, career',
+  keywords: 'blog, programming, technology, javascript, python, career, nam pham',
   openGraph: {
-    title: 'Biilog - Technical Blog',
+    title: 'Nam Pham - Technical Blog',
     description: 'Sharing knowledge about programming, technology and career development',
     type: 'website',
-    url: 'https://yourdomain.com',
+    url: 'https://namph.vercel.app/',
     images: [
       {
-        url: 'https://yourdomain.com/og-image.jpg',
+        url: 'https://namph.vercel.app/avatar.png',
         width: 1200,
         height: 630,
-        alt: 'Biilog - Technical Blog',
+        alt: 'Nam Pham - Technical Blog',
       },
     ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Biilog - Technical Blog',
-    description: 'Sharing knowledge about programming, technology and career development',
-    images: ['https://yourdomain.com/og-image.jpg'],
   },
 };
