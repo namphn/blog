@@ -110,45 +110,44 @@ body {
 
 /* ========== LISTS ========== */
 
+/* ========== LISTS (fix mất bullet & số thứ tự) ========== */
 .markdown-content ul {
-  margin-bottom: 1.75rem;
-  padding-left: 0;
+  list-style-type: disc;        /* trả lại bullet cho ul */
+  margin: 0 0 1.75rem 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;     /* trả lại số cho ol */
+  margin: 0 0 1.75rem 1.5rem;
+  padding-left: 1.5rem;
 }
 
 .markdown-content li {
   color: #d1d5db;
-  margin-bottom: 0.75rem;
+  margin: 0.5rem 0;
   line-height: 1.7;
-  padding-left: 1.5rem;
-  position: relative;
 }
 
-.markdown-content ul li::before {
-  content: "•";
-  color: #60a5fa;
+/* Chỉnh màu marker */
+.markdown-content ul li::marker {
+  color: #60a5fa;       /* màu bullet */
   font-weight: bold;
-  position: absolute;
-  left: 0;
-  top: 0;
 }
 
-.markdown-content ol {
-  margin-bottom: 1.75rem;
-  padding-left: 1.5rem;
-  counter-reset: item;
-}
-
-.markdown-content ol li {
-  counter-increment: item;
-  padding-left: 0.5rem;
-}
-
-.markdown-content ol li::before {
-  content: counter(item) ".";
-  color: #60a5fa;
+.markdown-content ol li::marker {
+  color: #60a5fa;       /* màu số */
   font-weight: 600;
-  margin-right: 0.5rem;
 }
+
+/* List lồng nhau giảm indent */
+.markdown-content ul ul,
+.markdown-content ul ol,
+.markdown-content ol ul,
+.markdown-content ol ol {
+  margin-left: 1rem;
+}
+
 
 /* ========== CODE STYLING ========== */
 
