@@ -1,6 +1,6 @@
 ---
 title: "Redis Concepts and Core Features Explained in Detail"
-date: "2025-08-14"
+date: "2025-07-14"
 excerpt: "Redis is more than just an in-memory key-value store. In this article, we’ll dive into its data structures, single-threaded architecture, persistence options (RDB, AOF), clustering, TTL and eviction strategies, and common commands every developer should know."
 author: "Nam Pham"
 readTime: "7 min read"

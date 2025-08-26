@@ -136,7 +136,7 @@ body {
 }
 
 .markdown-content ol li::marker {
-  color: #60a5fa;       /* màu số */
+  color: #161f2a;       /* màu số */
   font-weight: 600;
 }
 
@@ -388,4 +388,11 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out;
+}
+
+.markdown-content img {
+  display: block;
+  margin: 1rem auto; /* căn giữa theo chiều ngang */
+  max-width: 100%;   /* tránh tràn khung */
+  height: auto;      /* giữ tỷ lệ */
 }

@@ -1,6 +1,6 @@
 ---
 title: "What is ACID in MySQL"
-date: "2025-08-13"
+date: "2025-07-13"
 excerpt: "ACID in MySQL ensures reliable transactions through Atomicity, Consistency, Isolation, and Durability. Learn why it's crucial for databases."
 author: "Nam Pham"
 readTime: "5 min read"
